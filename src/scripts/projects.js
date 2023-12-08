@@ -35,14 +35,29 @@ function createTodo(title, description, dueDate, priority) {
     const priority = priority;
     //state of checklist of that to-do
     let checked = false;
-    
-    return { title, description, dueDate, priority }
+
+    //Getters
+    const getTitle = () => title;
+    const getDescription = () => description;
+    const getDueDate = () => dueDate;
+    const getPriority = () => priority;
+    const getChecked = () => checked;
+
+    return { getTitle, getDescription, getDueDate, getPriority, getChecked }
 }
 
+//TODO Access todo and be able operate on them
 function todoHandler(todo) {
+    
     const setTitle = (newTitle) => {
-        title = newTitle;
+        const newTodo = createTodo()
     }
+
+    // const personHandler = (person) => {
+    //     const newPerson = createPerson(person.getName() + " (Updated)");
+    //     return newPerson;
+    //   };
+      
 
     const setDescription = (newDesc) => {
         description = newDesc;
