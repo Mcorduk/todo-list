@@ -2,7 +2,7 @@
   "name": "webpack-demo",
   "version": "1.0.0",
   "description": "",
- "private": true,
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,5 +12,8 @@
   "devDependencies": {
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "date-fns": "^2.30.0"
   }
 }
