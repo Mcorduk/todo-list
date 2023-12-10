@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+nav {
+    min-height: 6vh;
+    height: 10%;
+    width: 100%;
+    background: rgb(63,94,251);
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(194,68,93,1) 100%); 
+
+}
+
+nav header {
+    color: white;
+    font-size: 36px;
+    padding-top: 5px;
+    padding-left: 10px;
+    height: 100%;
+}
+
+/*ASIDE*/
+
+aside {
+    min-height: ;
+    height: 90vh;
+    width: 200px;
+    background-color: lightgray;
+
+}
+
+/*FOOTER*/
+footer {
+    height: 4vh;
+    background-color: darkgray;
+}

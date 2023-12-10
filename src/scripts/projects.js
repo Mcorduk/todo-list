@@ -1,5 +1,5 @@
 import { compareAsc, format } from 'date-fns';
-
+//FIXME what import do you need from the date-fns?
 
 function createProject (name) {
     //Array to hold the Todos
@@ -72,6 +72,9 @@ function todoHandler(todo) {
     const setPriority = (newPriority) => {
         return createTodo(todo.getName(), todo.getDescription(), todo.getDueDate(), newPriority);
     }
-    
+
     return { setTitle, setDescription, setdueDate, setPriority }
 }
+
+
+export default { createProject, createTodo, todoHandler }
