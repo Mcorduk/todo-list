@@ -1,0 +1,5 @@
+Create object factories for Projects and Todos
+Give them functionalities, are you able to delete, add Projects
+Are you able to edit todos and delete them?
+
+Default project with a default todo in it

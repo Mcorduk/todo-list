@@ -26,15 +26,22 @@ function createProject (name) {
 
 // Create Todo's that will go into your projects
 function createTodo(title, description, dueDate, priority) {
-
+    //FIXME Make use of me!
     const priorityArray = ["Urgent", "Important", "Normal"]
     const title = title;
     const description = description;
     //FIXME Using the new date modules
     const dueDate = dueDate; 
     const priority = priority;
-    //state of checklist of that to-do
+    //state of checklist of current to-do
     let checked = false;
+
+    // toggle the state of checklist, something something immutability...
+    const toggleCheck = () => {
+        const newChecked = !checked;
+        checked = newChecked;
+        return newChecked;
+    };
 
     //Getters
     const getTitle = () => title;
@@ -43,38 +50,28 @@ function createTodo(title, description, dueDate, priority) {
     const getPriority = () => priority;
     const getChecked = () => checked;
 
-    return { getTitle, getDescription, getDueDate, getPriority, getChecked }
+    return { getTitle, getDescription, getDueDate, getPriority, getChecked, toggleCheck }
 }
 
 //TODO Access todo and be able operate on them
 function todoHandler(todo) {
     
     const setTitle = (newTitle) => {
-        const newTodo = createTodo()
-    }
-
-    // const personHandler = (person) => {
-    //     const newPerson = createPerson(person.getName() + " (Updated)");
-    //     return newPerson;
-    //   };
-      
+        // Create a new todo with the updated title and the same values for other properties
+        return createTodo(newTitle, todo.getDescription(), todo.getDueDate(), todo.getPriority());
+    };
 
     const setDescription = (newDesc) => {
-        description = newDesc;
+        return createTodo(todo.getName(), newDesc, todo.getDueDate(), todo.getPriority());
     }
 
     const setdueDate = (newDate) => {
-        dueDate = newDate;
+        return createTodo(todo.getName(), todo.getDescription(), newDate, todo.getPriority());
     }
     
     const setPriority = (newPriority) => {
-        priority = newPriority;
+        return createTodo(todo.getName(), todo.getDescription(), todo.getDueDate(), newPriority);
     }
-
-    // toggle the state of checklist, something something immutability...
-    const toggleCheck = () => {
-        const newChecked = !checked;
-        checked = newChecked;
-        return newChecked;
-    };
+    
+    return { setTitle, setDescription, setdueDate, setPriority }
 }
