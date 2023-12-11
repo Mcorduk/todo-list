@@ -94,3 +94,25 @@ confirmBtn.addEventListener("click", (event) => {
   }
 })();
 
+function addProject() {
+  // Get the input value
+  const projectTitleInput = document.getElementById('projectTitle');
+  const projectTitle = projectTitleInput.value.trim();
+
+  // Check if the input is not empty
+  if (projectTitle !== '') {
+      // Create a new article element
+      const newArticle = document.createElement('article');
+      newArticle.innerText = projectTitle;
+
+      // Prepend the new article to the "aside main" container
+      const projectList = document.getElementById('projectList');
+      projectList.prepend(newArticle);
+
+      // Clear the input field
+      projectTitleInput.value = '';
+  }
+}
+
+// Add event listener for the "Add" button
+document.getElementById('projectAdd').addEventListener('click', addProject);
