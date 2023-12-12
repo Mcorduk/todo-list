@@ -4,9 +4,6 @@ import { createProject } from "./projects";
 // Do stuff to projects on DOM
 const projectDOMInterface = () => {
 
-
-    
-
     // DELETE BUTTON FUNCTION FOR THE PROJECT
     //TODO 
     //Hook it up to projects storage

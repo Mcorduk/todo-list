@@ -1,7 +1,7 @@
 import { compareAsc, format } from 'date-fns';
 import { projectDOMInterface } from './dom.js';
-import { createProject, createTodo, todoHandler } from './projects.js';
-
+import { createProject, projectHandler } from './projects.js';
+import { createTodo, todoHandler } from './todos.js';
 
 // Main Factory function to create elements
 const elFactory = (type, attributes, ...children) => {
