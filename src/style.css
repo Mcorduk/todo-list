@@ -101,19 +101,9 @@ aside main {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: max-content;
     gap: 10px;
     padding-top: 10px;
-}
-
-aside article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 96%;
-    height: 56px;
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .cool-bottom-border {
@@ -130,6 +120,23 @@ aside article {
     background: linear-gradient(to right, #3498db, #e74c3c); /* Use your desired gradient colors */
     transform: translateX(-50%); /* Center the border horizontally */
 }
+
+aside article {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 96%;
+    height: 56px;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+aside article:hover {
+    background-color: lightblue;
+    color: #fff;
+}
+
 
 
 .create-project {
@@ -155,8 +162,12 @@ aside article {
 .create-project button:hover {
     background-color: #333;
     color: #fff;
+    
 }
 
+.create-project button:hover svg{
+    stroke: #fff;
+}
 /* TO-DOS Section */
 
 .home{

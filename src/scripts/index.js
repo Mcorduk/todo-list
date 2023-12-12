@@ -94,7 +94,7 @@ confirmBtn.addEventListener("click", (event) => {
   }
 })();
 
-function addProject() {
+(function addProject() {
   // Get the input value
   const projectTitleInput = document.getElementById('projectTitle');
   const projectTitle = projectTitleInput.value.trim();
@@ -107,12 +107,13 @@ function addProject() {
 
       // Prepend the new article to the "aside main" container
       const projectList = document.getElementById('projectList');
-      projectList.prepend(newArticle);
+      projectList.append(newArticle);
 
       // Clear the input field
       projectTitleInput.value = '';
   }
-}
-
-// Add event listener for the "Add" button
+  // Add event listener for the "Add" button
 document.getElementById('projectAdd').addEventListener('click', addProject);
+})();
+
+
