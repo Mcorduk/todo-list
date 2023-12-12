@@ -123,12 +123,14 @@ aside main {
 
 aside article {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    width: 96%;
+    width: 90%;
     height: 56px;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 
 }
 
@@ -136,8 +138,6 @@ aside article:hover {
     background-color: lightblue;
     color: #fff;
 }
-
-
 
 .create-project {
     padding: 20px;

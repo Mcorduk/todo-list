@@ -4,9 +4,9 @@ import { compareAsc, format } from 'date-fns';
 function createProject (name) {
     //Array to hold the Todos
     let todoArray = []
-    const name = name;
+    const projectTitle = name;
     
-    const getName = () => name;
+    const getName = () => projectTitle;
     //Uses the spread operator (...) 
     //to create a shallow copy of the original array.
     const getTodos = () => [...todoArray];
@@ -25,14 +25,14 @@ function createProject (name) {
 }
 
 // Create Todo's that will go into your projects
-function createTodo(title, description, dueDate, priority) {
+function createTodo(todoTitle, todoDescription, todoDueDate, todoPriority) {
     //FIXME Make use of me!
     const priorityArray = ["Urgent", "Important", "Normal"]
-    const title = title;
-    const description = description;
+    const title = todoTitle;
+    const description = todoDescription;
     //FIXME Using the new date modules
-    const dueDate = dueDate; 
-    const priority = priority;
+    const dueDate = todoDueDate; 
+    const priority = todoPriority;
     //state of checklist of current to-do
     let checked = false;
 
