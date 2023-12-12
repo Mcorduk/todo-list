@@ -1,7 +1,7 @@
 import { compareAsc, format } from 'date-fns';
 //FIXME what import do you need from the date-fns?
 
-function createProject (name) {
+const  createProject = (name) => {
     //Array to hold the Todos
     let todoArray = []
     const projectTitle = name;
@@ -25,7 +25,7 @@ function createProject (name) {
 }
 
 // Create Todo's that will go into your projects
-function createTodo(todoTitle, todoDescription, todoDueDate, todoPriority) {
+const createTodo = (todoTitle, todoDescription, todoDueDate, todoPriority) => {
     //FIXME Make use of me!
     const priorityArray = ["Urgent", "Important", "Normal"]
     const title = todoTitle;
@@ -54,7 +54,7 @@ function createTodo(todoTitle, todoDescription, todoDueDate, todoPriority) {
 }
 
 //TODO Access todo and be able operate on them
-function todoHandler(todo) {
+const todoHandler = (todo) => {
     
     const setTitle = (newTitle) => {
         // Create a new todo with the updated title and the same values for other properties

@@ -1,64 +1,64 @@
 import { compareAsc, format } from 'date-fns';
 import { createProject, createTodo, todoHandler } from './projects.js';
 
-  // FIXME I DONT WORK
-  function validateForm() {
-    var title = document.getElementById('title').value;
-    var dueDate = document.getElementById('birthday').value;
-    var validationMessageElement = document.getElementById('titleValidationMessage');
-    var dateValidationMessageElement = document.getElementById('dateValidationMessage');
+// FIXME I DONT WORK
+function validateForm() {
+  var title = document.getElementById('title').value;
+  var dueDate = document.getElementById('birthday').value;
+  var validationMessageElement = document.getElementById('titleValidationMessage');
+  var dateValidationMessageElement = document.getElementById('dateValidationMessage');
 
-    // Clear previous validation messages
-    validationMessageElement.innerHTML = '';
+  // Clear previous validation messages
+  validationMessageElement.innerHTML = '';
 
-    if (title.trim() === '') {
-      validationMessageElement.innerHTML = 'Todo Title cannot be empty.';
-      return false;
-    }
-
-    if (dueDate.trim() === '') {
-      dateValidationMessageElement.innerHTML = 'Due Date cannot be empty.';
-      return false;
-    }
-
-    // Additional validation logic can be added here
-    return true; // If all validation passes, the form will be submitted  
+  if (title.trim() === '') {
+    validationMessageElement.innerHTML = 'Todo Title cannot be empty.';
+    return false;
   }
-  
-  (function dialogListeners() {
-    const showButton = document.getElementById("showDialog");
-    const favDialog = document.getElementById("favDialog");
-    const outputBox = document.querySelector("output");
-    const selectEl = favDialog.querySelector("select");
-    const confirmBtn = favDialog.querySelector("#confirmBtn");
+
+  if (dueDate.trim() === '') {
+    dateValidationMessageElement.innerHTML = 'Due Date cannot be empty.';
+    return false;
+  }
+
+  // Additional validation logic can be added here
+  return true; // If all validation passes, the form will be submitted  
+}
+
+(function dialogListeners() {
+  const showButton = document.getElementById("showDialog");
+  const favDialog = document.getElementById("favDialog");
+  const outputBox = document.querySelector("output");
+  const selectEl = favDialog.querySelector("select");
+  const confirmBtn = favDialog.querySelector("#confirmBtn");
 
 
-    // "Show the dialog" button opens the <dialog> modally
-    showButton.addEventListener("click", () => {
-      favDialog.showModal();
-    });
+  // "Show the dialog" button opens the <dialog> modally
+  showButton.addEventListener("click", () => {
+    favDialog.showModal();
+  });
 
-    // "Favorite animal" input sets the value of the submit button
-    selectEl.addEventListener("change", (e) => {
-      confirmBtn.value = selectEl.value;
-    });
+  // "Favorite animal" input sets the value of the submit button
+  selectEl.addEventListener("change", (e) => {
+    confirmBtn.value = selectEl.value;
+  });
 
-    // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
-    favDialog.addEventListener("close", (e) => {
-      outputBox.value =
-        favDialog.returnValue === "default"
-          ? "No return value."
-          : `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
-    });
+  // "Cancel" button closes the dialog without submitting because of [formmethod="dialog"], triggering a close event.
+  favDialog.addEventListener("close", (e) => {
+    outputBox.value =
+      favDialog.returnValue === "default"
+        ? "No return value."
+        : `ReturnValue: ${favDialog.returnValue}.`; // Have to check for "default" rather than empty string
+  });
 
-    // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
-    confirmBtn.addEventListener("click", (event) => {
+  // Prevent the "confirm" button from the default behavior of submitting the form, and close the dialog with the `close()` method, which triggers the "close" event.
+  confirmBtn.addEventListener("click", (event) => {
 
-      event.preventDefault(); // We don't want to submit this fake form
-      favDialog.close(selectEl.value); // Have to send the select box value here.
+    event.preventDefault(); // We don't want to submit this fake form
+    favDialog.close(selectEl.value); // Have to send the select box value here.
 
-    });
-  })();
+  });
+})();
 
 // /////////////////////////////////////////////////////////////////////////////
 //DARK/LIGHT THEME TOGGLE IIFE
@@ -96,45 +96,57 @@ import { createProject, createTodo, todoHandler } from './projects.js';
 
 // /////////////////////////////////////////////////////////////////////////////
 
-(function() {
-  // Project Input Form
-  function addProjectInputForm() {
-    // Get the input value
-    const projectTitleInput = document.getElementById('projectTitle');
-    const projectTitle = projectTitleInput.value.trim();
 
-    // Check if the input is not empty
-    if (projectTitle !== '') {
-      // Create a new article element
-      const newArticle = document.createElement('article');
-      newArticle.innerText = projectTitle;
 
-      // Prepend the new article to the "aside main" container
-      const projectList = document.getElementById('projectList');
-      projectList.append(newArticle);
+// Do stuff to projects on DOM
+const projectDOMInterface = () => {
 
-      // Clear the input field
-      projectTitleInput.value = '';
+  // DELETE BUTTON FUNCTION FOR THE PROJECT
+  //TODO 
+  //Hook it up to projects storage
+  //Make sure projects are also deleted from the project storage
+  (function () {
+
+    function deleteProject() {
+      const projectList = document.querySelector("#projectList");
+
+      projectList.addEventListener("click", function (event) {
+        if (event.target.classList.contains("projectDelete")) {
+          const currentProject = event.target.closest("article");
+          currentProject.remove();
+        }
+      });
     }
-  }
+    document.addEventListener("DOMContentLoaded", deleteProject);
+  })();
 
-  // Add event listener for the "Add" button
-  document.getElementById('projectAdd').addEventListener('click', addProjectInputForm);
-})();
 
-// DELETE BUTTON FUNCTION FOR THE PROJECT
-(function () {
-  function deleteProject() {
-    const projectList = document.querySelector("#projectList");
-
-    projectList.addEventListener("click", function (event) {
-      if (event.target.classList.contains("projectDelete")) {
-        const currentProject = event.target.closest("article");
-        currentProject.remove();
+  // Add Projects using the Input
+  (function () {
+    // Project Input Form
+    function addProjectInputForm() {
+      // Get the input value
+      const projectTitleInput = document.getElementById('projectTitle');
+      const projectTitle = projectTitleInput.value.trim();
+  
+      // Check if the input is not empty
+      if (projectTitle !== '') {
+        // Create a new article element
+        const newArticle = document.createElement('article');
+        newArticle.innerText = projectTitle;
+  
+        // Prepend the new article to the "aside main" container
+        const projectList = document.getElementById('projectList');
+        projectList.append(newArticle);
+  
+        // Clear the input field
+        projectTitleInput.value = '';
       }
-    });
-  }
+    }
+  
+    // Add event listener for the "Add" button
+    document.getElementById('projectAdd').addEventListener('click', addProjectInputForm);
+  })();
+}
 
-  document.addEventListener("DOMContentLoaded", deleteProject);
-})();
-
+projectDOMInterface()

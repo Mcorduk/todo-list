@@ -42,6 +42,11 @@ nav {
     padding-left: 8px;
 }
 
+nav.content svg {
+    stroke: white;
+
+}
+
 nav img {
     display: inline-block;
     width: 30px;
