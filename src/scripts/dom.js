@@ -1,4 +1,4 @@
-import { createProject } from "./projects";
+import { createProject, projectHandler } from "./projects";
 
 
 // Do stuff to projects on DOM
@@ -10,7 +10,7 @@ const projectDOMInterface = () => {
     //Make sure projects are also deleted from the project storage
     (function () {
 
-        function deleteProject() {
+        function deleteProjectFromDOM() {
             const projectList = document.querySelector("#projectList");
 
             projectList.addEventListener("click", function (event) {
@@ -25,7 +25,7 @@ const projectDOMInterface = () => {
                 }
             });
         }
-        document.addEventListener("DOMContentLoaded", deleteProject);
+        document.addEventListener("DOMContentLoaded", deleteProjectFromDOM);
 
     })();
 
@@ -38,9 +38,14 @@ const projectDOMInterface = () => {
 
         // Check if the input is not empty
         if (projectTitle !== '') {
+
+            const Project = createProject(projectTitle)
+            //TODO PROJECT TO THE ARRAY  projectHandler.ad
+            // DATA PROJECT INDEX TO THE CREATED PROJECT
             // Create a new article element
             const newArticle = document.createElement('article');
             newArticle.innerText = projectTitle;
+            newArticle.dataset.projectIndex = 
 
             // Prepend the new article to the "aside main" container
             const projectList = document.getElementById('projectList');
@@ -49,13 +54,8 @@ const projectDOMInterface = () => {
             // Clear the input field
             projectTitleInput.value = '';
         }
-        // Create a project
-        //TODO ADD ME BACK
-        // const Project = createProject(projectTitle)
-        // projectArray.push(Project)
 
     }
-    console.log(projectArray)
     // Add event listener for the "Add" button
     document.getElementById('projectAdd').addEventListener('click', addProjectInputForm);
     addProjectInputForm()
