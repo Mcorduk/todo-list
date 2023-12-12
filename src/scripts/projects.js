@@ -1,9 +1,11 @@
 import { compareAsc, format } from 'date-fns';
 //FIXME what import do you need from the date-fns?
 
+
 const  createProject = (name) => {
+
     //Array to hold the Todos
-    let todoArray = []
+    let todoArray = [];
     const projectTitle = name;
     
     const getName = () => projectTitle;
@@ -22,6 +24,28 @@ const  createProject = (name) => {
     }
 
     return { getTodos, addTodo, removeTodo }
+}
+
+const projectHandler = (project) => {
+
+    let projectArray = [];
+    //DUMMY PROJECTS
+    const projectOne = createProject("I am A project!")
+    const projectTwo = createProject("I am Another project!")
+    projectArray.push(projectOne)
+    projectArray.push(projectTwo)
+    console.log("projectArray length:", projectArray.length); // Output the length of projectArray
+
+    //DUMMY Log details of each project
+    projectArray.forEach((project, index) => {
+        console.log(`Project ${index}:`, project.getTodos());
+    });
+
+    // Remove the Project from Project Array
+    function removeProjectFromArray(index) {
+        projectArray.splice(index, 1)
+        console.log(`Project ${index}: Was removed`);
+    }
 }
 
 // Create Todo's that will go into your projects
@@ -53,6 +77,7 @@ const createTodo = (todoTitle, todoDescription, todoDueDate, todoPriority) => {
     return { getTitle, getDescription, getDueDate, getPriority, getChecked, toggleCheck }
 }
 
+
 //TODO Access todo and be able operate on them
 const todoHandler = (todo) => {
     
@@ -77,4 +102,5 @@ const todoHandler = (todo) => {
 }
 
 
-export default { createProject, createTodo, todoHandler }
+export { createProject, createTodo, todoHandler };
+

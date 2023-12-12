@@ -154,6 +154,11 @@ aside article:hover {
     background-color: lightblue;
     color: #fff;
 }
+
+aside article button:hover {
+    background-color: aqua;
+    color: #fff;
+}
 /* Project Input Form Styles*/
 .create-project {
     padding: 20px;
