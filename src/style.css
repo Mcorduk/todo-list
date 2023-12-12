@@ -7,7 +7,7 @@
     --background-color: #f5f5f5;
     --text-color: #333;
 }
-  
+
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -18,11 +18,9 @@ body {
     --background-color: #333;
     --text-color: #f5f5f5;
 }
-
 dialog .dark{
     color-scheme: dark light;
 }
-
 .container {
     display: flex;
     flex-direction: column;
@@ -44,7 +42,6 @@ nav {
 
 nav.content svg {
     stroke: white;
-
 }
 
 nav img {
@@ -53,7 +50,6 @@ nav img {
     height: 30px;
     flex-shrink: 0;
     padding-top: 5px;
-    
 }
 nav button img {
     margin-right: 20px;
@@ -68,12 +64,27 @@ nav header {
     display: inline;
 }
 
-header span.hidden {
+span.hidden {
     display: none;
+}
+
+.oni-heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
 header:hover span.hidden {
     display: inline;
+}
+
+.oni-heart:hover span.hidden {
+    display: inline;
+
+}
+.oni-heart:hover svg {
+    stroke: pink;
 }
 
 
@@ -114,7 +125,6 @@ aside main {
 .cool-bottom-border {
     position: relative;
 }
-
 .cool-bottom-border::after {
     content: "";
     position: absolute;
@@ -126,6 +136,8 @@ aside main {
     transform: translateX(-50%); /* Center the border horizontally */
 }
 
+
+/* Individual Projects Styles*/
 aside article {
     display: flex;
     justify-content: space-between;
@@ -136,26 +148,23 @@ aside article {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding-left: 10px;
     padding-right: 10px;
-
 }
 
 aside article:hover {
     background-color: lightblue;
     color: #fff;
 }
-
+/* Project Input Form Styles*/
 .create-project {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .create-project input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
 }
-
 .create-project button {
     padding: 10px 20px;
     border: none;
@@ -163,13 +172,11 @@ aside article:hover {
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
-
 .create-project button:hover {
     background-color: #333;
     color: #fff;
     
 }
-
 .create-project button:hover svg{
     stroke: #fff;
 }
@@ -183,7 +190,6 @@ aside article:hover {
     display: flex;
     justify-content: space-between;
 }
-
 .home header h1 {
     font-size: 34px;
 }
@@ -198,11 +204,9 @@ footer {
     justify-content: center;
     align-items: center;
 }
-
 footer p {
     padding-right: 8px;
 }
-
 footer img {
     height: 24px;
     width: 24px;
