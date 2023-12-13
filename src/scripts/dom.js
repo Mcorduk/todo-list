@@ -1,13 +1,42 @@
 import { createProject, projectHandler } from "./projects";
 
 
+// Main Factory function to create elements
+const elFactory = (type, attributes, ...children) => {
+    const el = document.createElement(type)
+    
+    for (const key in attributes) {
+        el.setAttribute(key, attributes[key]);
+    }
+  
+    children.forEach(child => {
+        if (typeof child === "string") {
+            const newText = document.createTextNode(child);
+            el.append(newText);
+        } else {
+            el.append(child)
+        }
+    });
+    return el
+  }
+
+
+
 // Do stuff to projects on DOM
 const projectDOMInterface = () => {
 
-    // DELETE BUTTON FUNCTION FOR THE PROJECT
-    //TODO 
-    //Hook it up to projects storage
-    //Make sure projects are also deleted from the project storage
+    //Initiate a project handler
+    const handler = projectHandler()
+
+    //Creates Project delete buttons
+    const createDeleteButton = () => {
+        return elFactory("button", {"class":"projectDelete", "type":"button"},
+            elFactory("img", {"src":"../src/img/project-delete.svg","alt":"project delete button image" },""
+            )
+         )
+    }
+
+    // DELETE BUTTON FUNCTIONALITY FOR THE PROJECTS
     (function () {
 
         function deleteProjectFromDOM() {
@@ -16,12 +45,12 @@ const projectDOMInterface = () => {
             projectList.addEventListener("click", function (event) {
                 if (event.target.classList.contains("projectDelete")) {
                     const currentProject = event.target.closest("article");
+                    //Get the index of the project
                     let index = currentProject.dataset.projectIndex
                     // Remove the Project From The DOM
                     currentProject.remove();
                     // Remove the Project from Project Array
-                    //TODO ADD ME BACK
-                    // removeProjectFromArray(index);
+                    handler.removeProject(index);
                 }
             });
         }
@@ -38,21 +67,24 @@ const projectDOMInterface = () => {
 
         // Check if the input is not empty
         if (projectTitle !== '') {
-
+            
+            //Create a project object
             const Project = createProject(projectTitle)
-            //TODO PROJECT TO THE ARRAY  projectHandler.ad
-            // DATA PROJECT INDEX TO THE CREATED PROJECT
+            handler.addProject(Project)
+
             // Create a new article element
             const newArticle = document.createElement('article');
             newArticle.innerText = projectTitle;
-            newArticle.dataset.projectIndex = 
+            newArticle.dataset.projectIndex = handler.getLastIndex();
 
+            newArticle.append(createDeleteButton());
             // Prepend the new article to the "aside main" container
             const projectList = document.getElementById('projectList');
             projectList.append(newArticle);
 
             // Clear the input field
             projectTitleInput.value = '';
+
         }
 
     }

@@ -26,39 +26,35 @@ const  createProject = (name) => {
     return { getTodos, addTodo, removeTodo }
 }
 
-const projectHandler = (project) => {
+
+//Handler for Project Objects
+const projectHandler = () => {
 
     let projectArray = [];
 
+    //TODO kill me
     (function IAMADUMMY() {
         const projectOne = createProject("I am A project!")
         const projectTwo = createProject("I am Another project!")
         projectArray.push(projectOne)
         projectArray.push(projectTwo)
-        console.log("projectArray length:", projectArray.length); // Output the length of projectArray
 
-        //DUMMY Log details of each project
-        projectArray.forEach((project, index) => {
-            console.log(`Project ${index}:`, project.getTodos());
-        });
     })();
 
-    function getLastIndex(array) {
+    function getLastIndex() {
         return projectArray.length - 1
     }
     
-    function addProject(project) {
+    const addProject = (project) => {
         projectArray.push(project)
     }
 
-
-
     // Remove the Project from Project Array
-    function removeProject(index) {
+    const removeProject= (index) =>  {
         projectArray.splice(index, 1)
         console.log(`Project ${index}: Was removed`);
     }
-    return { projectArray, addProject, getLastIndex }
+    return { projectArray, addProject, getLastIndex, removeProject }
 }
 
 projectHandler()
