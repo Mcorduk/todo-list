@@ -103,12 +103,14 @@ aside {
     flex-direction: column;
     justify-content: flex-start;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding:16px 32px;
 }
 
 aside header {
     padding :8px;
     font-size: 24px;
     padding-bottom: 12px;
+    margin-bottom: 12px;
 }
 
 aside main {
@@ -166,6 +168,7 @@ aside article img {
 }
 /* Project Input Form Styles*/
 .create-project {
+    margin-top: 40px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -204,6 +207,47 @@ aside article img {
     font-size: 34px;
 }
 
+.project-div {
+    display: flex;
+}
+.project-div .card {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 100px;
+    width: 200px;
+    margin: 16px;
+    position: relative;
+    z-index: 1; /* Ensure the card is above the bookmark box */
+}
+
+.project-div .card::before {
+    content: "";
+    position: absolute;
+    z-index: -1; /* Set a lower z-index to place it behind the card */
+    top: 50%;
+    left: -8px; /* Adjust as needed for the desired distance from the card */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 30px 0 30px 20px; /* Adjust the border-width to change the size */
+    /*  Normal Importance FF90C2 
+        Important ED5AB3
+        Urgent 1640D6*/
+}
+/* Priority Normal */
+.project-div .card.normal::before{
+    border-color: transparent #FF90A2; /* Set the color of the bookmark box */
+}
+
+/* Priority Important */
+.project-div .card.important::before{
+    border-color: transparent #ED5Ad3; /* Set the color of the bookmark box */
+}
+
+/* Priority Urgent */
+.project-div .card.urgent::before{
+    border-color: transparent #1640F0; /* Set the color of the bookmark box */
+}
 
 /*FOOTER*/
 
