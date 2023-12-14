@@ -32,7 +32,32 @@ const projectDOMInterface = () => {
             )
          )
     }
+
+    function renderProject(index) {
     
+        function createTodoCard(todo){
+            // <div class="card normal">
+            //     <h2>Todo 1 Title</h2>
+            //     <p>Due: <span>2017-02-14</span></p>
+            // </div> 
+            return elFactory("div", {"class": `card ${todo.getPriority()}`},
+                        elFactory("h2", {}, `${todo.getTitle()}`),
+                        elFactory("p", {}, "Due: ",
+                            elFactory("span", {}, "2017-02-14")
+                        ),
+                    )
+        }
+    
+        const container = document.querySelector(".project-div")
+    
+        const currentProject = ProjectHandler.projectArray[index];
+        const todos = currentProject.getTodos();
+    
+        for (const todo of todos) {
+            container.append(createTodoCard(todo));
+        }
+     
+    }
     function getClickedProjectIndex(callback) {
         const projectList = document.querySelector("#projectList");
     
@@ -52,6 +77,7 @@ const projectDOMInterface = () => {
     // Example usage
     getClickedProjectIndex(function (index) {
         console.log("Clicked project index:", index);
+        renderProject(index)
     });
     
     
@@ -115,6 +141,7 @@ const projectDOMInterface = () => {
 
     return { getClickedProjectIndex }
 }
+
 
 
 export { projectDOMInterface };
