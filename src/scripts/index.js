@@ -1,5 +1,5 @@
 import { compareAsc, format } from 'date-fns';
-import { projectDOMInterface } from './dom.js';
+import { projectDOMInterface } from './asideDom.js/index.js';
 import { createProject, projectHandler } from './projects.js';
 import { createTodo, todoHandler } from './todos.js';
 
@@ -103,3 +103,4 @@ function validateForm() {
 
 
 projectDOMInterface()
+

@@ -20,13 +20,12 @@ const elFactory = (type, attributes, ...children) => {
     return el
   }
 
+//Initiate a project handler
+const handler = projectHandler()
 
 
 // Do stuff to projects on DOM
 const projectDOMInterface = () => {
-
-    //Initiate a project handler
-    const handler = projectHandler()
 
     //Creates Project delete buttons
     const createDeleteButton = () => {
@@ -94,5 +93,5 @@ const projectDOMInterface = () => {
 }
 
 
-export { projectDOMInterface };
+export { handler, projectDOMInterface };
 
