@@ -1,23 +1,21 @@
-import { handler } from 'asideDom.js';
 
 
-// Main Factory function to create elements
-const elFactory = (type, attributes, ...children) => {
-    const el = document.createElement(type)
-    
-    for (const key in attributes) {
-        el.setAttribute(key, attributes[key]);
-    }
-  
-    children.forEach(child => {
-        if (typeof child === "string") {
-            const newText = document.createTextNode(child);
-            el.append(newText);
-        } else {
-            el.append(child)
-        }
-    });
-    return el
-  }
+
+
+/*TODO
+
+    Add event listener to when the article itself is clicked: Done
+    get the project Index i done
+    get the project Itself handler.projectArray[i]
+    currentProject = 
+    Get the .project-div
+    handler variable :
+    getTodos()
+    Load contents of the clicked project */
+    // let currentProjectIndex = getClickedProjectIndex(function (index) {
+    //     return index;
+    // })
+    // const currentProject = ProjectHandler.projectArray[currentProjectIndex];
+    // console.log("I clicked on " + currentProject)
 
 

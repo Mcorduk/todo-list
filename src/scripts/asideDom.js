@@ -1,4 +1,4 @@
-import { createProject, projectHandler } from "./projects";
+import { createProject, ProjectHandler } from "./projects";
 
 
 // Main Factory function to create elements
@@ -20,8 +20,6 @@ const elFactory = (type, attributes, ...children) => {
     return el
   }
 
-//Initiate a project handler
-const handler = projectHandler()
 
 
 // Do stuff to projects on DOM
@@ -34,7 +32,29 @@ const projectDOMInterface = () => {
             )
          )
     }
-
+    
+    function getClickedProjectIndex(callback) {
+        const projectList = document.querySelector("#projectList");
+    
+        projectList.addEventListener("click", function (event) {
+            if (event.target.tagName.toLowerCase() === "article") {
+                const currentProject = event.target.closest("article");
+                // Get the index of the project
+                const clickedProjectIndex = currentProject.dataset.projectIndex;
+                // Remove the Project From The DOM
+                console.log(clickedProjectIndex);
+                // Call the callback function with the index
+                callback(clickedProjectIndex);
+            }
+        });
+    }
+    
+    // Example usage
+    getClickedProjectIndex(function (index) {
+        console.log("Clicked project index:", index);
+    });
+    
+    
     // DELETE BUTTON FUNCTIONALITY FOR THE PROJECTS
     (function () {
 
@@ -45,11 +65,13 @@ const projectDOMInterface = () => {
                 if (event.target.classList.contains("projectDelete")) {
                     const currentProject = event.target.closest("article");
                     //Get the index of the project
-                    let index = currentProject.dataset.projectIndex
+                    let index = getClickedProjectIndex(function (index) {
+                        return index
+                        });
                     // Remove the Project From The DOM
                     currentProject.remove();
                     // Remove the Project from Project Array
-                    handler.removeProject(index);
+                    ProjectHandler.removeProject(index);
                 }
             });
         }
@@ -57,8 +79,8 @@ const projectDOMInterface = () => {
 
     })();
 
-    // Add Projects using the Input
-    // Project Input Form
+    
+    // Project Input Form: Add Projects using the Input
     function addProjectInputForm() {
         // Get the input value
         const projectTitleInput = document.getElementById('projectTitle');
@@ -69,12 +91,12 @@ const projectDOMInterface = () => {
             
             //Create a project object
             const Project = createProject(projectTitle)
-            handler.addProject(Project)
+            ProjectHandler.addProject(Project)
 
             // Create a new article element
             const newArticle = document.createElement('article');
             newArticle.innerText = projectTitle;
-            newArticle.dataset.projectIndex = handler.getLastIndex();
+            newArticle.dataset.projectIndex = ProjectHandler.getLastIndex();
 
             newArticle.append(createDeleteButton());
             // Prepend the new article to the "aside main" container
@@ -90,8 +112,10 @@ const projectDOMInterface = () => {
     // Add event listener for the "Add" button
     document.getElementById('projectAdd').addEventListener('click', addProjectInputForm);
     addProjectInputForm()
+
+    return { getClickedProjectIndex }
 }
 
 
-export { handler, projectDOMInterface };
+export { projectDOMInterface };
 

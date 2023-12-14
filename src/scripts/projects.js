@@ -1,6 +1,26 @@
 import { compareAsc, format } from 'date-fns';
+import { createTodo, todoHandler } from './todos.js';
 //FIXME what import do you need from the date-fns?
 
+
+// Main Factory function to create elements
+const elFactory = (type, attributes, ...children) => {
+    const el = document.createElement(type)
+    
+    for (const key in attributes) {
+        el.setAttribute(key, attributes[key]);
+    }
+  
+    children.forEach(child => {
+        if (typeof child === "string") {
+            const newText = document.createTextNode(child);
+            el.append(newText);
+        } else {
+            el.append(child)
+        }
+    });
+    return el
+  }
 
 const  createProject = (name) => {
 
@@ -57,10 +77,46 @@ const projectHandler = () => {
     return { projectArray, addProject, getLastIndex, removeProject }
 }
 
+
 projectHandler()
 
+//Initiate a project handler
+const ProjectHandler = projectHandler()
 
+const exampleTodo = createTodo("Something", "Something", "Something", "important")
+ProjectHandler.projectArray[0].addTodo(exampleTodo)
+ProjectHandler.projectArray[0].addTodo(exampleTodo)
+console.log(ProjectHandler.projectArray[0].getTodos())
 
+const renderProject = () =>{
+    
+    const container = document.querySelector(".project-div")
+    
+    function createTodoCard(todo){
+        // <div class="card normal">
+        //     <h2>Todo 1 Title</h2>
+        //     <p>Due: <span>2017-02-14</span></p>
+        // </div> 
+        return elFactory("div", {"class": `card ${todo.getPriority()}`},
+                    elFactory("h2", {}, `${todo.getTitle()}`),
+                    elFactory("p", {}, "Due: ",
+                        elFactory("span", {}, "2017-02-14")
+                    ),
+                )
+    }
 
-export { createProject, projectHandler };
+    let currentProjectIndex = getClickedProjectIndex(function (index) {
+        return index;
+    })
+    const currentProject = ProjectHandler.projectArray[currentProjectIndex];
+    const todos = currentProject.getTodos()
+    
+
+    for (const todo in todos) {
+        container.append(createTodoCard(todo))
+    }
+}
+
+export { ProjectHandler, createProject };
+
 
