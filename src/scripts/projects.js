@@ -90,6 +90,6 @@ console.log(ProjectHandler.projectArray[0].getTodos())
 
 
 
-export { ProjectHandler, createProject };
+export { ProjectHandler, createProject, elFactory };
 
 

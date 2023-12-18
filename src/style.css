@@ -255,7 +255,35 @@ aside article img {
 .card h2 {
     padding-bottom: 48px;
 }
+.project-div .addTodoButton {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 120px;
+    width: 200px;
+    margin: 16px;
+    position: relative;
+    z-index: 1; /* Ensure the card is above the bookmark box */
 
+
+}
+.project-div button {
+    height: 120px;
+    width: 100%;
+    background-image:linear-gradient(90deg, #FC466B 20%, #3F5EFB 100%), linear-gradient(#fff, #fff);
+    background-size: 0 100%, auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all .2s ease-out;
+}
+
+.project-div button:hover {
+    color: #fff;
+    background-size: 100% 100%, auto;
+  }
+
+.project-div img {
+    height: 48px;
+    width: 100%;
+}
 
 /*FOOTER*/
 

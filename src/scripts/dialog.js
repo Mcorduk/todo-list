@@ -1,5 +1,7 @@
+import { getFocusedProject } from "./asideDom";
 import { createTodo } from "./todos";
-import function submitForm(event) {
+
+function submitForm(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
     const form = event.target; // Get the form that triggered the submit event
@@ -19,15 +21,19 @@ import function submitForm(event) {
         formObject.priority
     );
 
+
+    
     // Log the todo object to the console
     console.log(todo);
     console.log(todo.getTitle());
+
+    
+
     // Close the dialog if needed
     const favDialog = document.getElementById("favDialog");
     if (favDialog) {
         favDialog.close();
     }
-
 
 };
 
