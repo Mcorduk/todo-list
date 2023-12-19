@@ -1,4 +1,4 @@
-import { ProjectHandler, elFactory } from "./projects";
+import { ProjectHandler, elFactory } from "./projectFactory";
 
 
 function getClickedProjectIndex(callback) {

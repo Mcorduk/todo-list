@@ -3,8 +3,8 @@ import { projectDOMInterface } from './asideDom.js';
 import { dialogListeners } from './dialog.js';
 import { createTodoCard, renderProject } from './projectDOM';
 import { projectRenderer } from './projectDOM.js';
-import { createProject, projectHandler } from './projects.js';
-import { createTodo, todoHandler } from './todos.js';
+import { createProject, projectHandler } from './projectFactory.js/index.js';
+import { createTodo, todoHandler } from './todoFactory.js/index.js';
 
 
 // /////////////////////////////////////////////////////////////////////////////

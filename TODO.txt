@@ -1,9 +1,2 @@
-Create object factories for Projects and Todos
-Give them functionalities, are you able to delete, add Projects
-Are you able to edit todos and delete them?
-
-Default project with a default todo in it
-Dialog box for Todo's:
-Form submit?
-
-Only a text box and submit button for creating  Projects
+dialog button to get event listeners even when a new project renders
+them again

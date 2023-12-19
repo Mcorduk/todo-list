@@ -1,5 +1,5 @@
 import { getFocusedProject } from "./asideDom";
-import { createTodo } from "./todos";
+import { createTodo } from "./todoFactory";
 
 function submitForm(event) {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -57,4 +57,4 @@ function dialogListeners() {
     showDialog();
 }
 
-export { dialogListeners };
+export { dialogListeners, showDialog };

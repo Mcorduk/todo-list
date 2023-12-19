@@ -1,5 +1,5 @@
 
-import { ProjectHandler, createProject, elFactory } from "./projects";
+import { ProjectHandler, createProject, elFactory } from "./projectFactory";
 // Main Factory function to create elements
 
 
