@@ -6,7 +6,8 @@ import { projectRenderer } from './projectDOM.js';
 import { createProject, projectHandler } from './projectFactory';
 import { createTodo, todoHandler } from './todoFactory';
 
-
+//Inital page load, render the first project on default
+renderProject(0);
 // /////////////////////////////////////////////////////////////////////////////
 //DARK/LIGHT THEME TOGGLE IIFE
 (function themeToggle() {

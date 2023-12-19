@@ -1,7 +1,7 @@
+import { format } from "date-fns";
 import { renderProject } from "./projectDOM";
 import { ProjectHandler, createProject } from "./projectFactory";
 import { createTodo } from "./todoFactory";
-
 
 // Get dialog
 const dialog = document.querySelector("dialog");
@@ -38,7 +38,7 @@ function submitForm(event) {
     formData.forEach((value, key) => {
         formObject[key] = value;
     });
-
+    console.log(formObject.dueDate)
     // Create a todo object using the form data
     const todo = createTodo(
         formObject.title,
@@ -113,8 +113,8 @@ function closeDialog() {
     //Reset the form
     form.reset();
 }
-
-function dialogListeners() {
+//Makes dialog box function
+(function dialogListeners() {
 
     // Event listener for submit button
     form.addEventListener('submit', submitForm);
@@ -123,10 +123,7 @@ function dialogListeners() {
     showDialog();
     // Close dialog box via button
     closeDialog();
-}
-
-//Makes dialog box function
-dialogListeners()
+})()
 
 
-export { dialogListeners, showDialog };
+export { showDialog };

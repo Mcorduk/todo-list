@@ -7,7 +7,9 @@ them again
 
 
 /*FIXME
-    1- Make DOM todo take values from project Todo correctly, currently on title is taken
+    1- Fix due date
+    2- Fix description
     1- Form Validation
     2- If current Project is deleted, Todo's shouldn't still be showing up
+    3- Fix the footer (:
  */

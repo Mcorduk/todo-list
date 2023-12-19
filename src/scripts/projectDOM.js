@@ -20,10 +20,10 @@ function getClickedProjectIndex(callback) {
 
 
 function createTodoCard(todo) {
-    return elFactory("div", { "class": `card ${todo.getPriority()}` },
+    return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
         elFactory("h2", {}, `${todo.getTitle()}`),
         elFactory("p", {}, "Due: ",
-            elFactory("span", {}, "2017-02-14")
+            elFactory("span", {}, `${todo.getDueDate}`)
         ),
     );
 }
