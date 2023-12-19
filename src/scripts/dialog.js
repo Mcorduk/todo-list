@@ -1,4 +1,5 @@
-import { ProjectHandler } from "./projectFactory";
+import { renderProject } from "./projectDOM";
+import { ProjectHandler, createProject } from "./projectFactory";
 import { createTodo } from "./todoFactory";
 
 
@@ -6,8 +7,27 @@ import { createTodo } from "./todoFactory";
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
+let currentTodo; // Variable to store the current todo
 
+function parentProjectIndex() {
+    const projectDiv = document.querySelector(".project-div");
+    
+    if (projectDiv) {
+        const dataIndex = projectDiv.getAttribute('data-project-index');
+        
+        if (dataIndex) {
+            console.log(`Form submitted: the project form submitted in is ${dataIndex}`)
+            return parseInt(dataIndex, 10); // Convert to integer
+        }
+    }
+    console.log("Returning project index to add todo failed.")
+    return null; // Return null if no valid index is found
+}
+
+
+// #FIXME Please do not write functions like this
 function submitForm(event) {
+
     event.preventDefault(); // Prevent the default form submission behavior
 
     const form = event.target; // Get the form that triggered the submit event
@@ -26,14 +46,19 @@ function submitForm(event) {
         formObject.dueDate,
         formObject.priority
     );
-
+    //Get the index of the parent project Div
+    let index = parentProjectIndex()
+    //Add the submitted Todo to the currrent projects array
+    ProjectHandler.projectArray[index].addTodo(todo);
+    //render the project again so new todo is also in the Dom
+    renderProject(index)
     // Log the todo object to the console
     console.log(todo);
     console.log(todo.getTitle());
+    //Reset the form inputs
     form.reset();
+    //Close the dialog box
     dialog.close();
-
-
 };
 
 
@@ -85,6 +110,8 @@ function closeDialog() {
             }
         });
     }
+    //Reset the form
+    form.reset();
 }
 
 function dialogListeners() {

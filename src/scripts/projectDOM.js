@@ -18,6 +18,7 @@ function getClickedProjectIndex(callback) {
     });
 }
 
+
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority()}` },
         elFactory("h2", {}, `${todo.getTitle()}`),
@@ -50,3 +51,6 @@ function renderProject(index) {
 getClickedProjectIndex(function(index) {
     renderProject(index);
 });
+
+export { renderProject };
+
