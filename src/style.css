@@ -220,6 +220,20 @@ aside article img {
     padding: 20px;
 }
 
+.project-div h2 {
+    position: relative;
+}
+
+.project-div button.editTodo {
+    position: absolute;
+    right:-22px;
+    top: -22px;
+}
+.project-div button.editTodo img {
+    height: 16px;
+    width: 16px;
+}
+
 /* ###################### CARD BOOKMARK START ###################### */
 .project-div .card::before {
     content: "";
@@ -265,7 +279,7 @@ aside article img {
 
 
 }
-.project-div button {
+.addTodoButton button {
     height: 120px;
     width: 100%;
     background-image:linear-gradient(90deg, #FC466B 20%, #3F5EFB 100%), linear-gradient(#fff, #fff);
@@ -275,7 +289,7 @@ aside article img {
     transition: all .2s ease-out;
 }
 
-.project-div button:hover {
+.addTodoButton button:hover {
     color: #fff;
     background-size: 100% 100%, auto;
   }

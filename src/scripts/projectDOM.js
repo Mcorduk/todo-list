@@ -21,7 +21,8 @@ function getClickedProjectIndex(callback) {
 
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
-        elFactory("h2", {}, `${todo.getTitle()}`),
+        elFactory("h2", {}, `${todo.getTitle()}`, elFactory("button", {"class" : "editTodo"}, elFactory("img", {"src": "../src/img/todoEdit.svg"}, ""))), 
+           
         elFactory("p", {}, "Due: ",
             elFactory("span", {}, `${todo.getDueDate()}`)
         ),

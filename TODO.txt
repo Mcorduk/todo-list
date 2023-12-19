@@ -2,14 +2,22 @@ dialog button to get event listeners even when a new project renders
 them again
 
 /* TODO 
-
+    - Add an indicator to see which project is currently open
+    3- Fix the footer
 */
 
 
 /*FIXME
-    1- Fix due date
-    2- Fix description
-    1- Form Validation
-    2- If current Project is deleted, Todo's shouldn't still be showing up
-    3- Fix the footer (:
+
+    2- If current Project is deleted, To-do's shouldn't still be showing up
+
  */
+
+/*QOL 
+    1- Default date for form
+    2- Randomized placeholders for form placeholders
+    3- hover effect for todos
+    4- Toggle dark theme fixing non dark elements
+    5- Make funny default Todo's for the dummy project
+    6- Remaining To-do count
+*/

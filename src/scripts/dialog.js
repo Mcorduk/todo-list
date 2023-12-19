@@ -4,8 +4,9 @@ import { ProjectHandler, createProject } from "./projectFactory";
 import { createTodo } from "./todoFactory";
 
 // Get dialog
-const dialog = document.querySelector("dialog");
+const dialog = document.getElementById("addTodoDialog");
 const form = document.querySelector("form");
+
 
 function parentProjectIndex() {
     const projectDiv = document.querySelector(".project-div");
@@ -28,7 +29,6 @@ function submitForm(event) {
 
     event.preventDefault(); // Prevent the default form submission behavior
 
-
     if (validateForm()) {
     const form = event.target; // Get the form that triggered the submit event
     const formData = new FormData(form);
@@ -46,20 +46,14 @@ function submitForm(event) {
         formObject.dueDate,
         formObject.priority
     );
-    //Get the index of the parent project Div
-    let index = parentProjectIndex()
+
+    let index = parentProjectIndex(); //Get the index of the parent project Div
     //Add the submitted Todo to the currrent projects array
     ProjectHandler.projectArray[index].addTodo(todo);
-    //render the project again so new todo is also in the Dom
-    renderProject(index)
-    // Log the todo object to the console
-    console.log(todo);
-    console.log(todo.getTitle());
-    //Reset the form inputs
-    form.reset();
-    //Close the dialog box
-    
-        dialog.close();
+    renderProject(index); //render the project again so new todo is also in the Dom
+
+    form.reset(); //Reset the form inputs
+    dialog.close(); //Close the dialog box
     }
 };
 
@@ -105,8 +99,6 @@ function validateForm() {
     return true;
 }
 
-
-  
 
 function showDialog() {
     const projectDiv = document.querySelector(".project-div")
