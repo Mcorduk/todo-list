@@ -7,7 +7,6 @@ import { createTodo } from "./todoFactory";
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
-
 function parentProjectIndex() {
     const projectDiv = document.querySelector(".project-div");
     
@@ -29,6 +28,8 @@ function submitForm(event) {
 
     event.preventDefault(); // Prevent the default form submission behavior
 
+
+    if (validateForm()) {
     const form = event.target; // Get the form that triggered the submit event
     const formData = new FormData(form);
 
@@ -57,33 +58,54 @@ function submitForm(event) {
     //Reset the form inputs
     form.reset();
     //Close the dialog box
-    dialog.close();
+    
+        dialog.close();
+    }
 };
 
 
-// FIXME I DONT WORK
-function validateForm() {
-    var title = document.getElementById('title').value;
-    var dueDate = document.getElementById('birthday').value;
-    var validationMessageElement = document.getElementById('titleValidationMessage');
-    var dateValidationMessageElement = document.getElementById('dateValidationMessage');
-  
+function clearValidationMessage() {
+    const titleValidationMessage = document.getElementById('titleValidationMessage');
+    const dateValidationMessage = document.getElementById('dateValidationMessage');
+
     // Clear previous validation messages
-    validationMessageElement.innerHTML = '';
-  
-    if (title.trim() === '') {
-      validationMessageElement.innerHTML = 'Todo Title cannot be empty.';
-      return false;
+    titleValidationMessage.textContent = '';
+    dateValidationMessage.textContent = '';
+}
+
+
+// Validate Form
+function validateForm() {
+    const titleInput = document.getElementById('title');
+    const dueDateInput = document.getElementById('dueDate');
+
+    clearValidationMessage();
+
+    // Perform validation
+    if (!titleInput.value.trim()) {
+        titleValidationMessage.textContent = 'Todo Title cannot be empty.';
+        return false;
     }
-  
-    if (dueDate.trim() === '') {
-      dateValidationMessageElement.innerHTML = 'Due Date cannot be empty.';
-      return false;
+
+    if (!dueDateInput.value.trim()) {
+        dateValidationMessage.textContent = 'Due Date cannot be empty.';
+        return false;
+    } else {
+        // You can perform additional date validation if needed
+        const currentDate = new Date();
+        const selectedDate = new Date(dueDateInput.value);
+
+        if (selectedDate < currentDate) {
+            dateValidationMessage.textContent = 'Due Date must be in the future.';
+            return false;
+        }
     }
-  
-    // Additional validation logic can be added here
-    return true; // If all validation passes, the form will be submitted  
-  }
+
+    // If all validations pass
+    return true;
+}
+
+
   
 
 function showDialog() {
@@ -104,13 +126,17 @@ function closeDialog() {
 
     if (cancelButton) {
         cancelButton.addEventListener("click", function () {
-            if (favDialog) {
-                favDialog.close();
+            if (dialog) {
+                dialog.close();
+                //Clear any validation messages
+                clearValidationMessage();
+                //Reset the form
+                form.reset();
             }
         });
     }
-    //Reset the form
-    form.reset();
+
+
 }
 //Makes dialog box function
 (function dialogListeners() {
