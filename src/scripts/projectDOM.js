@@ -44,21 +44,42 @@ function createTodoButton(buttonClass, src) {
     });
 })()
 
+// projectList.addEventListener("click", function (event) {
+//     if (event.target.closest(".projectDelete")) {
+//         const currentProject = event.target.closest("article");
+//         //Get the index of the project
+//         let index = currentProject.dataset.projectIndex
+//         // Remove the Project From The DOM
+//         currentProject.remove();
+//         // Remove the Project from Project Array
+//         ProjectHandler.removeProject(index);
+//     }
+// });
 
 function deleteTodoCard() {
+    
+    const projectDiv = document.querySelector(".project-div")   
+    projectDiv.addEventListener("click", function (event) {
+        const currentProjectIndex = projectDiv.dataset.projectIndex;
+        const currentProject = ProjectHandler.projectArray[currentProjectIndex];
 
-    projectList.addEventListener("click", function (event) {
-        if (event.target.closest(".deleteTodoButton")) {
+        if (event.target.classList.contains("deleteTodoButton")) {
             const currentTodo = event.target.closest(".card");
-            //Get the index of the project
-            let index = currentProject.dataset.projectIndex
-            // Remove the Project From The DOM
-            currentProject.remove();
-            // Remove the Project from Project Array
-            ProjectHandler.removeProject(index);
+
+            // Get the index of the project
+            let index = currentTodo.dataset.todoIndex;
+
+            // Remove the Todo From The DOM
+            currentTodo.remove();
+            // Remove the Todo from Project Array
+            currentProject.removeTodo(index);
+            // Render the project again so the project refreshes, todo gets correct index
+            renderProject(currentProjectIndex)
         }
     });
 }
+// To-do delete button gets functionality
+deleteTodoCard()
 
 
 function createTodoCard(todo) {
