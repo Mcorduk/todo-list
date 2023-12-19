@@ -7,7 +7,6 @@ import { createTodo } from "./todoFactory";
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
-let currentTodo; // Variable to store the current todo
 
 function parentProjectIndex() {
     const projectDiv = document.querySelector(".project-div");

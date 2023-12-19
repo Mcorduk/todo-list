@@ -8,7 +8,7 @@ const createTodo = (todoTitle, todoDescription, todoDueDate, todoPriority) => {
     const title = todoTitle;
     const description = todoDescription;
     //FIXME Using the new date modules
-    const dueDate = new Date();
+    const dueDate = new Date(todoDueDate);
 
     const priority = todoPriority;
     //state of checklist of current to-do
@@ -24,7 +24,7 @@ const createTodo = (todoTitle, todoDescription, todoDueDate, todoPriority) => {
     //Getters
     const getTitle = () => title;
     const getDescription = () => description;
-    const getDueDate = () => dueDate;
+    const getDueDate = () => `${dueDate.getFullYear()}-${dueDate.getMonth()+1}-${dueDate.getDate()}`
     const getPriority = () => priority;
     const getChecked = () => checked;
 

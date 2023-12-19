@@ -23,7 +23,7 @@ function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
         elFactory("h2", {}, `${todo.getTitle()}`),
         elFactory("p", {}, "Due: ",
-            elFactory("span", {}, `${todo.getDueDate}`)
+            elFactory("span", {}, `${todo.getDueDate()}`)
         ),
     );
 }
