@@ -6,7 +6,7 @@ import { createTodo } from "./todoFactory";
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
-// FIXME Cancel button submits the form
+
 function submitForm(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -30,12 +30,12 @@ function submitForm(event) {
     // Log the todo object to the console
     console.log(todo);
     console.log(todo.getTitle());
+    form.reset();
+    dialog.close();
 
-    // Close the dialog if needed
-    if (dialog) {
-        dialog.close();
-    }
+
 };
+
 
 // FIXME I DONT WORK
 function validateForm() {
