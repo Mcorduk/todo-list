@@ -1,3 +1,4 @@
+import { showDialog } from "./dialog";
 import { ProjectHandler, elFactory } from "./projectFactory";
 
 
@@ -45,7 +46,7 @@ function renderProject(index) {
     }
 
     container.append(createTodoAdderCard());
-
+    showDialog();
 }
 
 getClickedProjectIndex(function(index) {

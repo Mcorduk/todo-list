@@ -1,5 +1,5 @@
 import { compareAsc, format } from 'date-fns';
-import { createTodo, todoHandler } from './todoFactory.js/index.js';
+import { createTodo, todoHandler } from './todoFactory';
 //FIXME what import do you need from the date-fns?
 
 

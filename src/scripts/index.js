@@ -3,8 +3,8 @@ import { projectDOMInterface } from './asideDom.js';
 import { dialogListeners } from './dialog.js';
 import { createTodoCard, renderProject } from './projectDOM';
 import { projectRenderer } from './projectDOM.js';
-import { createProject, projectHandler } from './projectFactory.js/index.js';
-import { createTodo, todoHandler } from './todoFactory.js/index.js';
+import { createProject, projectHandler } from './projectFactory';
+import { createTodo, todoHandler } from './todoFactory';
 
 
 // /////////////////////////////////////////////////////////////////////////////
@@ -48,31 +48,3 @@ projectDOMInterface()
 
 
 
-//Makes dialog box function
-dialogListeners()
-
-
-
-// FIXME I DONT WORK
-function validateForm() {
-  var title = document.getElementById('title').value;
-  var dueDate = document.getElementById('birthday').value;
-  var validationMessageElement = document.getElementById('titleValidationMessage');
-  var dateValidationMessageElement = document.getElementById('dateValidationMessage');
-
-  // Clear previous validation messages
-  validationMessageElement.innerHTML = '';
-
-  if (title.trim() === '') {
-    validationMessageElement.innerHTML = 'Todo Title cannot be empty.';
-    return false;
-  }
-
-  if (dueDate.trim() === '') {
-    dateValidationMessageElement.innerHTML = 'Due Date cannot be empty.';
-    return false;
-  }
-
-  // Additional validation logic can be added here
-  return true; // If all validation passes, the form will be submitted  
-}

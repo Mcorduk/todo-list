@@ -1,2 +1,16 @@
 dialog button to get event listeners even when a new project renders
 them again
+
+/* TODO 
+    1- Open Dialog
+    2- Be able to submit form
+    3- Take form, turn it into a todo
+    4- Give todo correct index 
+    5- Append this todo to the Projects todo array
+    6- refresh project or append todo to the project DOM
+*/
+
+
+/*FIXME
+    1- Form Validation
+ */
