@@ -220,6 +220,11 @@ aside article img {
     padding: 20px;
 }
 
+.project-div .checked {
+    text-decoration: line-through;
+    background-color: lightblue;
+}
+
 .project-div h2 {
     position: relative;
 }
@@ -229,19 +234,19 @@ aside article img {
     width: 16px;
 }
 
-.project-div button.checkTodo {
+.project-div button.checkTodoButton {
     position: absolute;
     right:42px;
     top: -22px;
 }
 
-.project-div button.editTodo {
+.project-div button.editTodoButton {
     position: absolute;
     right:10px;
     top: -22px;
 }
 
-.project-div button.deleteTodo {
+.project-div button.deleteTodoButton {
     position: absolute;
     right:-22px;
     top: -22px;

@@ -25,12 +25,25 @@ function createTodoButton(buttonClass, src) {
         elFactory("img", {"src": `${src}`}, ""))
 } 
 
+(function checkTodo() {
+    const projectDiv = document.querySelector(".project-div")
+
+    projectDiv.addEventListener("click", function (event) {
+        const checkTodoButton = event.target.closest(".checkTodoButton");
+
+        if (checkTodoButton) {
+            const card = event.target.closest(".card")
+            card.classList.toggle("checked")
+        }
+    });
+})()
+
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
         elFactory("h2", {}, `${todo.getTitle()}`,
-            createTodoButton(`checkTodo`, `../src/img/todoCheck.svg`),
-            createTodoButton(`editTodo`, `../src/img/todoEdit.svg`), 
-            createTodoButton(`deleteTodo`, `../src/img/todoDelete.svg`)),
+            createTodoButton(`checkTodoButton`, `../src/img/todoCheck.svg`),
+            createTodoButton(`editTodoButton`, `../src/img/todoEdit.svg`), 
+            createTodoButton(`deleteTodoButton`, `../src/img/todoDelete.svg`)),
            
         elFactory("p", {}, "Due: ",
             elFactory("span", {}, `${todo.getDueDate()}`)
