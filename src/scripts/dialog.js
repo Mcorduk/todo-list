@@ -58,6 +58,7 @@ function submitForm(event) {
 };
 
 
+//Clear validation messages after cancel or submit
 function clearValidationMessage() {
     const titleValidationMessage = document.getElementById('titleValidationMessage');
     const dateValidationMessage = document.getElementById('dateValidationMessage');
@@ -113,6 +114,7 @@ function showDialog() {
     });
 }
 
+
 function closeDialog() {
     const cancelButton = document.getElementById("cancelButton");
 
@@ -130,6 +132,8 @@ function closeDialog() {
 
 
 }
+
+
 //Makes dialog box function
 (function dialogListeners() {
 

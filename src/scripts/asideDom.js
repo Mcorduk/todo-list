@@ -15,8 +15,9 @@ const projectDOMInterface = () => {
          )
     }
     
-
-    // DELETE BUTTON FUNCTIONALITY FOR THE PROJECTS
+    
+    // I am not adding todo index
+    // DELETE BUTTON FUNCTIONALITY FOR THE TODOS
     function deleteProjectFromDOM() {
 
         projectList.addEventListener("click", function (event) {

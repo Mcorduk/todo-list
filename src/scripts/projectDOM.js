@@ -1,6 +1,10 @@
 import { showDialog } from "./dialog";
 import { ProjectHandler, elFactory } from "./projectFactory";
 
+
+const projectDiv = document.querySelector(".project-div")
+
+
 //Callback function that gets the clicked project index
 function getClickedProjectIndex(callback) {
     const projectList = document.querySelector("#projectList");
@@ -25,9 +29,11 @@ function createTodoButton(buttonClass, src) {
         elFactory("img", {"src": `${src}`}, ""))
 } 
 
-(function checkTodo() {
-    const projectDiv = document.querySelector(".project-div")
 
+//TODO Add functionality to me to change Todo Object Check state
+//Check Todo's as complete when check button is clicked, this toggles 
+(function checkTodoCard() {
+    
     projectDiv.addEventListener("click", function (event) {
         const checkTodoButton = event.target.closest(".checkTodoButton");
 
@@ -37,6 +43,23 @@ function createTodoButton(buttonClass, src) {
         }
     });
 })()
+
+
+function deleteTodoCard() {
+
+    projectList.addEventListener("click", function (event) {
+        if (event.target.closest(".deleteTodoButton")) {
+            const currentTodo = event.target.closest(".card");
+            //Get the index of the project
+            let index = currentProject.dataset.projectIndex
+            // Remove the Project From The DOM
+            currentProject.remove();
+            // Remove the Project from Project Array
+            ProjectHandler.removeProject(index);
+        }
+    });
+}
+
 
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
@@ -51,11 +74,13 @@ function createTodoCard(todo) {
     );
 }
 
+
 function createTodoAdderCard() {
     return elFactory("div", {"class":"addTodoButton"}, elFactory("p", {}, elFactory("button", {"id":"showDialog"},
         elFactory("img", {"src":"../src/img/addTodo.svg",
      "alt":"image for a button to add more todos."}))))
 }
+
 
 function renderProject(index) {
     const container = document.querySelector(".project-div");
@@ -64,16 +89,24 @@ function renderProject(index) {
 
     const currentProject = ProjectHandler.projectArray[index];
     const todos = currentProject.getTodos();
-
+    //Dataset to be added to todo card
+    let todoIndex = 0
     for (const todo of todos) {
-        container.append(createTodoCard(todo));
+        let todoCard = createTodoCard(todo) 
+        todoCard.dataset.todoIndex = todoIndex;
+        container.append(todoCard);
+
+        todoIndex++;
+
     }
     container.append(createTodoAdderCard());
 }
 
+
 getClickedProjectIndex(function(index) {
     renderProject(index);
 });
+
 
 export { renderProject };
 
