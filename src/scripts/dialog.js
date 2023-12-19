@@ -6,7 +6,7 @@ import { createTodo } from "./todoFactory";
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
 
-
+// FIXME Cancel button submits the form
 function submitForm(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -32,8 +32,8 @@ function submitForm(event) {
     console.log(todo.getTitle());
 
     // Close the dialog if needed
-    if (favDialog) {
-        favDialog.close();
+    if (dialog) {
+        dialog.close();
     }
 };
 
@@ -75,6 +75,18 @@ function showDialog() {
     });
 }
 
+function closeDialog() {
+    const cancelButton = document.getElementById("cancelButton");
+
+    if (cancelButton) {
+        cancelButton.addEventListener("click", function () {
+            if (favDialog) {
+                favDialog.close();
+            }
+        });
+    }
+}
+
 function dialogListeners() {
 
     // Event listener for submit button
@@ -82,6 +94,8 @@ function dialogListeners() {
 
     // Show dialog box via button
     showDialog();
+    // Close dialog box via button
+    closeDialog();
 }
 
 //Makes dialog box function

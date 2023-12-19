@@ -1,7 +1,7 @@
 import { showDialog } from "./dialog";
 import { ProjectHandler, elFactory } from "./projectFactory";
 
-
+//Callback function that gets the clicked project index
 function getClickedProjectIndex(callback) {
     const projectList = document.querySelector("#projectList");
 
@@ -44,12 +44,9 @@ function renderProject(index) {
     for (const todo of todos) {
         container.append(createTodoCard(todo));
     }
-
     container.append(createTodoAdderCard());
-    showDialog();
 }
 
 getClickedProjectIndex(function(index) {
     renderProject(index);
-    // You can perform actions based on the clicked project's index here
 });
