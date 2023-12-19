@@ -18,7 +18,8 @@ renderProject(0);
   // Function to toggle the dark theme
   function toggleDarkTheme() {
     document.body.classList.toggle('dark-theme');
-
+    const addTodoButton = document.querySelector('.addTodoButton');
+    addTodoButton.classList.toggle('addTodoButtonDark');
     // Toggle the dark theme class on the dialog element
     const dialogElement = document.querySelector('dialog');
     if (dialogElement) {
@@ -40,6 +41,10 @@ renderProject(0);
   if (userThemePreference === 'dark') {
     document.body.classList.add('dark-theme');
   }
+
+  // Apply the theme to additional elements
+  
+
 })();
 
 // /////////////////////////////////////////////////////////////////////////////

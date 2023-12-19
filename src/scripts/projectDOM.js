@@ -44,17 +44,6 @@ function createTodoButton(buttonClass, src) {
     });
 })()
 
-// projectList.addEventListener("click", function (event) {
-//     if (event.target.closest(".projectDelete")) {
-//         const currentProject = event.target.closest("article");
-//         //Get the index of the project
-//         let index = currentProject.dataset.projectIndex
-//         // Remove the Project From The DOM
-//         currentProject.remove();
-//         // Remove the Project from Project Array
-//         ProjectHandler.removeProject(index);
-//     }
-// });
 
 function deleteTodoCard() {
     
@@ -82,6 +71,7 @@ function deleteTodoCard() {
 deleteTodoCard()
 
 
+//Used for creating the Delete, Edit and Check button on To-do's
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
         elFactory("h2", {}, `${todo.getTitle()}`,
