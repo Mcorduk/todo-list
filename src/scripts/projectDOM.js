@@ -19,9 +19,18 @@ function getClickedProjectIndex(callback) {
 }
 
 
+// function to create button elements for the todo card 
+function createTodoButton(buttonClass, src) {
+    return elFactory("button", {"class" : `${buttonClass}`},
+        elFactory("img", {"src": `${src}`}, ""))
+} 
+
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
-        elFactory("h2", {}, `${todo.getTitle()}`, elFactory("button", {"class" : "editTodo"}, elFactory("img", {"src": "../src/img/todoEdit.svg"}, ""))), 
+        elFactory("h2", {}, `${todo.getTitle()}`,
+            createTodoButton(`checkTodo`, `../src/img/todoCheck.svg`),
+            createTodoButton(`editTodo`, `../src/img/todoEdit.svg`), 
+            createTodoButton(`deleteTodo`, `../src/img/todoDelete.svg`)),
            
         elFactory("p", {}, "Due: ",
             elFactory("span", {}, `${todo.getDueDate()}`)

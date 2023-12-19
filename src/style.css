@@ -224,15 +224,29 @@ aside article img {
     position: relative;
 }
 
+.project-div h2 img {
+    height: 16px;
+    width: 16px;
+}
+
+.project-div button.checkTodo {
+    position: absolute;
+    right:42px;
+    top: -22px;
+}
+
 .project-div button.editTodo {
+    position: absolute;
+    right:10px;
+    top: -22px;
+}
+
+.project-div button.deleteTodo {
     position: absolute;
     right:-22px;
     top: -22px;
 }
-.project-div button.editTodo img {
-    height: 16px;
-    width: 16px;
-}
+
 
 /* ###################### CARD BOOKMARK START ###################### */
 .project-div .card::before {
