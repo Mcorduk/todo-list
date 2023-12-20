@@ -1,4 +1,5 @@
 
+import { renderProject } from "./projectDOM";
 import { ProjectHandler, createProject, elFactory } from "./projectFactory";
 
 
@@ -29,6 +30,7 @@ const projectDOMInterface = () => {
                 currentProject.remove();
                 // Remove the Project from Project Array
                 ProjectHandler.removeProject(index);
+                renderProject(index)
             }
         });
     }
