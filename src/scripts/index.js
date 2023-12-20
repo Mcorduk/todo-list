@@ -1,16 +1,16 @@
 import { compareAsc, format } from 'date-fns';
 import { projectDOMInterface } from './asideDom.js';
 import { dialogListeners } from './dialog.js';
+import { loadFromLocalStorage, savetoLocalStorage } from './localStorage.js';
 import { createTodoCard, renderProject } from './projectDOM';
 import { projectRenderer } from './projectDOM.js';
 import { ProjectHandler, createProject, projectHandler } from './projectFactory';
 import { createTodo, todoHandler } from './todoFactory';
 
-//Inital page load, render the first project on default
 
-//create Dummy projects
-//create Dummy Todo's
 
+//create Dummy projects, create Dummy Todo's
+(function loadDummyData(){
 const exampleProject = createProject("Sprint 1");
 ProjectHandler.addProject(exampleProject);
 
@@ -23,10 +23,13 @@ const exampleTodo3 = createTodo("San Francisco'ya gidildi.", "Something", "2024-
 ProjectHandler.projectArray[0].addTodo(exampleTodo1)
 ProjectHandler.projectArray[0].addTodo(exampleTodo2)
 ProjectHandler.projectArray[0].addTodo(exampleTodo3)
+})();
 
+loadFromLocalStorage();
 console.log(ProjectHandler.projectArray[0].getTodos())
-
+//Inital page load, render the first project on default
 renderProject(0);
+
 // /////////////////////////////////////////////////////////////////////////////
 //DARK/LIGHT THEME TOGGLE IIFE
 (function themeToggle() {
@@ -69,7 +72,7 @@ renderProject(0);
 // /////////////////////////////////////////////////////////////////////////////
 
 
-projectDOMInterface()
+
 
 
 

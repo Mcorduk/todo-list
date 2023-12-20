@@ -61,6 +61,10 @@ const projectDOMInterface = () => {
             // Clear the input field
             projectTitleInput.value = '';
         }
+        //Render added project if there is no other projects
+        if(ProjectHandler.projectArray.length === 1) {
+            renderProject[0]
+        }
     }
 
 
@@ -70,6 +74,8 @@ const projectDOMInterface = () => {
     deleteProjectFromDOM()
 }
 
+//Init Interface function
+projectDOMInterface()
 
 export { elFactory, projectDOMInterface };
 
