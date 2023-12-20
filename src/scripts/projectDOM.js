@@ -1,4 +1,4 @@
-import { form, showDialog } from "./dialog";
+import { parentProjectIndex } from "./dialog";
 import { ProjectHandler, elFactory } from "./projectFactory";
 
 
@@ -30,7 +30,6 @@ function createTodoButton(buttonClass, src) {
 } 
 
 
-//TODO Add functionality to me to change Todo Object Check state
 //Check Todo's as complete when check button is clicked, this toggles 
 (function checkTodoCard() {
     
@@ -39,7 +38,11 @@ function createTodoButton(buttonClass, src) {
 
         if (checkTodoButton) {
             const card = event.target.closest(".card")
+
             card.classList.toggle("checked")
+            let index = parentProjectIndex()
+            ProjectHandler.projectArray[index].todoArray[card.dataset.todoIndex].toggleCheck();
+            
         }
     });
 })()
@@ -107,6 +110,9 @@ function renderProject(index) {
         let todoCard = createTodoCard(todo) 
         todoCard.dataset.todoIndex = todoIndex;
         container.append(todoCard);
+        if (todo.getChecked()){
+            todoCard.classList.add("checked")
+        }
 
         todoIndex++;
 

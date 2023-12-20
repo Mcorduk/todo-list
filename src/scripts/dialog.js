@@ -213,4 +213,5 @@ function closeDialog() {
 })();
 
 // Exporting form and showDialog function
-export { form, showDialog };
+export { form, parentProjectIndex, showDialog };
+

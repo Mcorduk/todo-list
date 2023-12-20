@@ -3,14 +3,12 @@ import { compareAsc, format } from 'date-fns';
 
 // Create Todo's that will go into your projects
 const createTodo = (todoTitle, todoDescription, todoDueDate, todoPriority) => {
-    //FIXME Make use of me!
-    const priorityArray = ["Urgent", "Important", "Normal"]
+
     const title = todoTitle;
     const description = todoDescription;
-    //FIXME Using the new date modules
     const dueDate = new Date(todoDueDate);
-
     const priority = todoPriority;
+    
     //state of checklist of current to-do
     let checked = false;
 
