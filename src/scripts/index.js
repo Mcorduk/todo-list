@@ -12,11 +12,13 @@ import { createTodo, todoHandler } from './todoFactory';
 //create Dummy Todo's
 
 const exampleProject = createProject("Sprint 1");
-ProjectHandler.addProject(exampleProject)
+ProjectHandler.addProject(exampleProject);
 
-const exampleTodo1 = createTodo("Oyun yapıldı.", "Something", "2024-04-04", "normal")
-const exampleTodo2 = createTodo("Ilk 7'ye girildi.", "Something", "2024-04-05", "important")
-const exampleTodo3 = createTodo("San Francisco'ya gidildi.", "Something", "2024-04-06", "urgent")
+const exampleTodo1 = createTodo("Oyun yapıldı.", "Something", "2024-04-04", "normal");
+exampleTodo1.toggleCheck();
+const exampleTodo2 = createTodo("Ilk 7'ye girildi.", "Something", "2024-04-05", "important");
+exampleTodo2.toggleCheck();
+const exampleTodo3 = createTodo("San Francisco'ya gidildi.", "Something", "2024-04-06", "urgent");
 
 ProjectHandler.projectArray[0].addTodo(exampleTodo1)
 ProjectHandler.projectArray[0].addTodo(exampleTodo2)

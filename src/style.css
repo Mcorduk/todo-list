@@ -18,9 +18,7 @@ body {
     --background-color: #333;
     --text-color: #f5f5f5;
 }
-dialog .dark{
-    color-scheme: dark light;
-}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -169,18 +167,20 @@ aside article img {
 /* Project Input Form Styles*/
 .create-project {
     margin-top: 40px;
-    padding: 20px;
+    padding: 16px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .create-project input {
     width: 100%;
     padding: 10px;
+    margin-top: 6px;
     margin-bottom: 20px;
     box-sizing: border-box;
 }
+
 .create-project button {
-    padding: 10px 20px;
-    border: none;
+    
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
@@ -203,6 +203,13 @@ aside article img {
 .home header {
     display: flex;
     justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+}
+
+.home header.cool-bottom-border::after{
+    margin-left: -46px;
 }
 .home header h1 {
     font-size: 34px;
