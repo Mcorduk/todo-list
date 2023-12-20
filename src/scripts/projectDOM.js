@@ -52,7 +52,7 @@ function deleteTodoCard() {
         const currentProjectIndex = projectDiv.dataset.projectIndex;
         const currentProject = ProjectHandler.projectArray[currentProjectIndex];
 
-        if (event.target.classList.contains("deleteTodoButton")) {
+        if (event.target.closest(".deleteTodoButton")) {
             const currentTodo = event.target.closest(".card");
 
             // Get the index of the project

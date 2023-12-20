@@ -8,7 +8,7 @@ them again
 
 
 /*FIXME
-
+    1- Checked todo unchecks after navigating to a different project
     2- If current Project is deleted, To-do's shouldn't still be showing up
 
  */

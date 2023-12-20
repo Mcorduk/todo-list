@@ -32,31 +32,4 @@ const createTodo = (todoTitle, todoDescription, todoDueDate, todoPriority) => {
 }
 
 
-//TODO Access todo and be able operate on them
-const todoHandler = (todo) => {
-    
-    const setTitle = (newTitle) => {
-        // Create a new todo with the updated title and the same values for other properties
-        return createTodo(newTitle, todo.getDescription(), todo.getDueDate(), todo.getPriority());
-    };
-
-    const setDescription = (newDesc) => {
-        return createTodo(todo.getName(), newDesc, todo.getDueDate(), todo.getPriority());
-    }
-
-    const setdueDate = (newDate) => {
-        return createTodo(todo.getName(), todo.getDescription(), newDate, todo.getPriority());
-    }
-    
-    const setPriority = (newPriority) => {
-        return createTodo(todo.getName(), todo.getDescription(), todo.getDueDate(), newPriority);
-    }
-
-    return { setTitle, setDescription, setdueDate, setPriority }
-}
-
-
-
-
-
-export { createTodo, todoHandler };
+export { createTodo };
