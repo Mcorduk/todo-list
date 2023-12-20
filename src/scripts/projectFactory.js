@@ -56,28 +56,24 @@ const projectHandler = () => {
 
     let projectArray = [];
 
-    //TODO kill me
-    (function IAMADUMMY() {
-        const projectOne = createProject("I am A project!")
-        const projectTwo = createProject("I am Another project!")
-        projectArray.push(projectOne)
-        projectArray.push(projectTwo)
-
-    })();
 
     function getLastIndex() {
         return projectArray.length - 1
     }
     
+
     const addProject = (project) => {
         projectArray.push(project)
     }
+
 
     // Remove the Project from Project Array
     const removeProject= (index) =>  {
         projectArray.splice(index, 1)
         console.log(`Project ${index}: Was removed`);
     }
+
+
     return { projectArray, addProject, getLastIndex, removeProject }
 }
 
@@ -86,12 +82,6 @@ projectHandler()
 
 //Initiate a project handler
 const ProjectHandler = projectHandler()
-
-const exampleTodo = createTodo("Something", "Something", "Something", "important")
-ProjectHandler.projectArray[0].addTodo(exampleTodo)
-ProjectHandler.projectArray[0].addTodo(exampleTodo)
-console.log(ProjectHandler.projectArray[0].getTodos())
-
 
 
 export { ProjectHandler, createProject, elFactory };
