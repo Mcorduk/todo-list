@@ -94,7 +94,7 @@ header:hover span.hidden {
 }
 
 aside {
-    height: 90vh;
+    height: 86vh;
     min-width: 300px;
     width: fit-content;
     display: flex;
