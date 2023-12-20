@@ -7,7 +7,7 @@ import { ProjectHandler, createProject, elFactory } from "./projectFactory";
 //Creates Project delete buttons
 const createDeleteButton = () => {
     return elFactory("button", {"class":"projectDelete", "type":"button"},
-        elFactory("img", {"src":"../src/img/project-delete.svg","alt":"project delete button image" },""
+        elFactory("img", {"src":"./img/project-delete.svg","alt":"project delete button image" },""
         )
     )
 }

@@ -78,9 +78,9 @@ deleteTodoCard()
 function createTodoCard(todo) {
     return elFactory("div", { "class": `card ${todo.getPriority().toLowerCase()}` },
         elFactory("h2", {}, `${todo.getTitle()}`,
-            createTodoButton(`checkTodoButton`, `../src/img/todoCheck.svg`),
-            createTodoButton(`editTodoButton`, `../src/img/todoEdit.svg`), 
-            createTodoButton(`deleteTodoButton`, `../src/img/todoDelete.svg`)),
+            createTodoButton(`checkTodoButton`, `./img/todoCheck.svg`),
+            createTodoButton(`editTodoButton`, `./img/todoEdit.svg`), 
+            createTodoButton(`deleteTodoButton`, `./img/todoDelete.svg`)),
            
         elFactory("p", {}, "Due: ",
             elFactory("span", {}, `${todo.getDueDate()}`)
@@ -92,7 +92,7 @@ function createTodoCard(todo) {
 function createTodoAdderCard() {
     return elFactory("div", {"class":"addTodoButton"}, elFactory("p", {}, 
                 elFactory("button", {"id":"showDialog"},
-                    elFactory("img", {"src":"../src/img/addTodo.svg",
+                    elFactory("img", {"src":"./img/addTodo.svg",
                     "alt":"image for a button to add more todos."}))))
 }
 
