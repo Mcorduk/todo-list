@@ -1,11 +1,10 @@
-import { compareAsc, format } from 'date-fns';
-import { projectDOMInterface } from './asideDom.js';
-import { dialogListeners } from './dialog.js';
+import { } from 'date-fns';
+import { renderAside } from './asideDom.js';
+import { } from './dialog.js';
 import { loadFromLocalStorage, savetoLocalStorage } from './localStorage.js';
-import { createTodoCard, renderProject } from './projectDOM';
-import { projectRenderer } from './projectDOM.js';
-import { ProjectHandler, createProject, projectHandler } from './projectFactory';
-import { createTodo, todoHandler } from './todoFactory';
+import { renderProject } from './projectDOM';
+import { ProjectHandler, createProject } from './projectFactory';
+import { createTodo } from './todoFactory';
 
 
 
@@ -13,6 +12,9 @@ import { createTodo, todoHandler } from './todoFactory';
 (function loadDummyData(){
 const exampleProject = createProject("Sprint 1");
 ProjectHandler.addProject(exampleProject);
+
+const exampleProject2 = createProject("Sprint 2");
+ProjectHandler.addProject(exampleProject2);
 
 const exampleTodo1 = createTodo("Oyun yapıldı.", "Something", "2024-04-04", "normal");
 exampleTodo1.toggleCheck();
@@ -25,11 +27,14 @@ ProjectHandler.projectArray[0].addTodo(exampleTodo2)
 ProjectHandler.projectArray[0].addTodo(exampleTodo3)
 })();
 
-loadFromLocalStorage();
+//If there is user data in localStorage load it
+
+
+//Log first projects todos for debugging
 console.log(ProjectHandler.projectArray[0].getTodos())
 //Inital page load, render the first project on default
 renderProject(0);
-
+renderAside(),
 // /////////////////////////////////////////////////////////////////////////////
 //DARK/LIGHT THEME TOGGLE IIFE
 (function themeToggle() {

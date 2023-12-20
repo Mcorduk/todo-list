@@ -47,7 +47,7 @@ const  createProject = (name) => {
         todoArray[index] = newTodo;
     }
 
-    return { getTodos, addTodo, removeTodo, replaceTodo, todoArray }
+    return { getName, getTodos, addTodo, removeTodo, replaceTodo, todoArray }
 }
 
 

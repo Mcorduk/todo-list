@@ -1,6 +1,6 @@
 import { parentProjectIndex } from "./dialog";
+import { savetoLocalStorage } from "./localStorage";
 import { ProjectHandler, elFactory } from "./projectFactory";
-
 
 const projectDiv = document.querySelector(".project-div")
 
@@ -117,6 +117,7 @@ function renderProject(index) {
         todoIndex++;
 
     }
+    savetoLocalStorage()
     container.append(createTodoAdderCard());
 }
 

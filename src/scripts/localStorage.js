@@ -29,6 +29,7 @@
 
 import { ProjectHandler } from "./projectFactory";
 
+
 function savetoLocalStorage() {
 
     if(localStorage.getItem('projectsData') == null) {
@@ -38,23 +39,32 @@ function savetoLocalStorage() {
     // Get old data from localStorage
     let storage_data = JSON.parse(localStorage.getItem('projectsData'))
 
-    // Replace old data with the current ProjectHandler's array
-    storage_data = ProjectHandler.projectArray;
+    // Update existing elements in storage_data with the current ProjectHandler's array
+    ProjectHandler.projectArray.forEach((project, index) => {
+        storage_data[index] = project;
+    });
+
+    localStorage.setItem('projectsData', JSON.stringify(storage_data));
+    console.log(storage_data)
+    console.log(JSON.stringify(storage_data))
+    console.log(`Projects saved.`)
 
 }
+
 
 function loadFromLocalStorage() {
+    try {
+        const storage_data = localStorage.getItem('projectsData');
 
-    //Check if there's data in local storage
-    const storage_data = localStorage.getItem('projectsData')
-
-    if(storage_data) {
-        const parsedProjects = JSON.parse(storage_data);
-        
-        //Update the array with loaded data
-        ProjectHandler.projectArray = parsedProjects
+        if (storage_data) {
+            ProjectHandler.projectArray = JSON.parse(storage_data);
+        }
+    } catch (error) {
+        console.error("Error loading data from localStorage:", error);
     }
 }
+
+
 
 export { loadFromLocalStorage, savetoLocalStorage };
 

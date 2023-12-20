@@ -1,5 +1,6 @@
 // Importing necessary modules and functions
 import { format } from "date-fns";
+import { savetoLocalStorage } from "./localStorage";
 import { renderProject } from "./projectDOM";
 import { ProjectHandler, createProject } from "./projectFactory";
 import { createTodo } from "./todoFactory";

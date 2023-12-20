@@ -1,22 +1,24 @@
 
+import { savetoLocalStorage } from "./localStorage";
 import { renderProject } from "./projectDOM";
 import { ProjectHandler, createProject, elFactory } from "./projectFactory";
+
+
+//Creates Project delete buttons
+const createDeleteButton = () => {
+    return elFactory("button", {"class":"projectDelete", "type":"button"},
+        elFactory("img", {"src":"../src/img/project-delete.svg","alt":"project delete button image" },""
+        )
+    )
+}
 
 
 // Do stuff to projects on DOM
 const projectDOMInterface = () => {
     // Get DOM container that holds Projects
     const projectList = document.getElementById('projectList');
+    
 
-    //Creates Project delete buttons
-    const createDeleteButton = () => {
-        return elFactory("button", {"class":"projectDelete", "type":"button"},
-            elFactory("img", {"src":"../src/img/project-delete.svg","alt":"project delete button image" },""
-            )
-         )
-    }
-    
-    
     // I am not adding todo index
     // DELETE BUTTON FUNCTIONALITY FOR THE TODOS
     function deleteProjectFromDOM() {
@@ -30,7 +32,16 @@ const projectDOMInterface = () => {
                 currentProject.remove();
                 // Remove the Project from Project Array
                 ProjectHandler.removeProject(index);
-                renderProject(index)
+                const projectIndex = document.querySelector(".project-div").getAttribute('data-project-index');
+                //Save current state of the Project arrays to storage
+                savetoLocalStorage();
+                //Render The projects Again
+                renderAside()
+                if(projectIndex === index ){
+                    renderProject(ProjectHandler.getLastIndex())
+
+                }
+                
             }
         });
     }
@@ -60,6 +71,7 @@ const projectDOMInterface = () => {
             projectList.append(newArticle);
             // Clear the input field
             projectTitleInput.value = '';
+            savetoLocalStorage();
         }
         //Render added project if there is no other projects
         if(ProjectHandler.projectArray.length === 1) {
@@ -72,10 +84,38 @@ const projectDOMInterface = () => {
     document.getElementById('projectAdd').addEventListener('click', addProjectInputForm);
     addProjectInputForm()
     deleteProjectFromDOM()
+
+    return {createDeleteButton}
+}
+
+
+const renderAside = () => {
+
+    const container = document.getElementById('projectList');
+    container.innerHTML = "";
+    const projects = ProjectHandler.projectArray;
+    
+    let projectIndex = 0;
+    for (const project of projects) {
+        // Create a new article element
+        const newArticle = document.createElement('article');
+        // Articles text node is projects name
+        newArticle.innerText = project.getName();
+        // Articles project index is projects index
+        newArticle.dataset.projectIndex = projectIndex;
+        //Add the delete button to the new project
+        newArticle.append(createDeleteButton());
+        // Append the new article to the "aside main" container
+        container.append(newArticle);
+        console.log(`Aside Project ${projectIndex} was rendered.`)
+        projectIndex++;
+    }
+
 }
 
 //Init Interface function
 projectDOMInterface()
 
-export { elFactory, projectDOMInterface };
+
+export { elFactory, projectDOMInterface, renderAside };
 
