@@ -149,6 +149,8 @@ function showDialog() {
 
         if (addButtonDiv) {
             dialog.showModal();
+            form.removeEventListener('submit', editForm); // Remove the previous listener
+            form.addEventListener('submit', submitForm);
         }
     });
 }
