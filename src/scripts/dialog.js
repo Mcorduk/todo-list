@@ -8,6 +8,7 @@ const dialog = document.getElementById("addTodoDialog");
 const form = document.querySelector("form");
 
 
+//Index of the parent project, determines which project todo to be added
 function parentProjectIndex() {
     const projectDiv = document.querySelector(".project-div");
     
@@ -58,6 +59,45 @@ function submitForm(event) {
 };
 
 
+//Open form but for editing
+function editForm(event) {
+
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    if (validateForm()) {
+    const form = event.target; // Get the form that triggered the submit event
+    const formData = new FormData(form);
+
+    // Convert FormData to a plain object
+    const formObject = {};
+    formData.forEach((value, key) => {
+        formObject[key] = value;
+    });
+    console.log(formObject.dueDate)
+    // Create a todo object using the form data
+    const todo = createTodo(
+        formObject.title,
+        formObject.description,
+        formObject.dueDate,
+        formObject.priority
+    );
+
+    let index = parentProjectIndex(); //Get the index of the parent project Div
+    //Add the submitted Todo to the currrent projects array
+    let todoIndex = form.dataset.todoIndex
+    ProjectHandler.projectArray[index].replaceTodo( todoIndex,todo);
+    renderProject(index); //render the project again so new todo is also in the Dom
+    form.reset(); //Reset the form inputs
+    dialog.close(); //Close the dialog box
+
+    if (form.classList.contains("edit")){
+        form.classList.remove("edit")
+    }
+    }
+};
+
+
+
 //Clear validation messages after cancel or submit
 function clearValidationMessage() {
     const titleValidationMessage = document.getElementById('titleValidationMessage');
@@ -105,14 +145,35 @@ function showDialog() {
     const projectDiv = document.querySelector(".project-div")
 
     projectDiv.addEventListener("click", function (event) {
-        console.log(event.target);
         const addButtonDiv = event.target.closest(".addTodoButton");
 
         if (addButtonDiv) {
             dialog.showModal()
+        } 
+    });
+}
+
+function showEditDialog() {
+    const projectDiv = document.querySelector(".project-div");
+
+    projectDiv.addEventListener("click", function (event) {
+        const editTodoButton = event.target.closest(".editTodoButton");
+        const cardToEdit = event.target.closest(".card");
+
+        if (editTodoButton && cardToEdit) {
+            const index = cardToEdit.dataset.todoIndex;
+
+            form.classList.add("edit");
+            form.dataset.todoIndex = index;
+            dialog.showModal();
+
+            // Dynamically attach the appropriate function to the submit event
+            form.removeEventListener('submit', submitForm); // Remove the previous listener
+            form.addEventListener('submit', editForm);
         }
     });
 }
+
 
 
 function closeDialog() {
@@ -123,9 +184,14 @@ function closeDialog() {
             if (dialog) {
                 dialog.close();
                 //Clear any validation messages
+
                 clearValidationMessage();
                 //Reset the form
                 form.reset();
+                //remove edit mode from the form
+                if (form.classList.contains("edit")){
+                    form.classList.remove("edit")
+                }
             }
         });
     }
@@ -140,11 +206,15 @@ function closeDialog() {
     // Event listener for submit button
     form.addEventListener('submit', submitForm);
 
+
     // Show dialog box via button
     showDialog();
+    // Show edit todo  dialog box via button
+    showEditDialog()
     // Close dialog box via button
     closeDialog();
 })()
 
 
-export { showDialog };
+export { form, showDialog };
+

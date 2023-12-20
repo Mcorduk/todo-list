@@ -43,7 +43,11 @@ const  createProject = (name) => {
         todoArray.splice(index, 1);
     }
 
-    return { getTodos, addTodo, removeTodo }
+    const replaceTodo = (index, newTodo) => {
+        todoArray[index] = newTodo;
+    }
+
+    return { getTodos, addTodo, removeTodo, replaceTodo }
 }
 
 

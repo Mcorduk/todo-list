@@ -198,6 +198,7 @@ aside article img {
 .home{
     padding: 10px;
     width: 100%;
+    min-width: 300px;
 }
 .home header {
     display: flex;
@@ -209,6 +210,8 @@ aside article img {
 
 .project-div {
     display: flex;
+    flex-wrap: wrap;
+
 }
 .project-div .card {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

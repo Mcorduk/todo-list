@@ -1,4 +1,4 @@
-import { showDialog } from "./dialog";
+import { form, showDialog } from "./dialog";
 import { ProjectHandler, elFactory } from "./projectFactory";
 
 
@@ -87,9 +87,10 @@ function createTodoCard(todo) {
 
 
 function createTodoAdderCard() {
-    return elFactory("div", {"class":"addTodoButton"}, elFactory("p", {}, elFactory("button", {"id":"showDialog"},
-        elFactory("img", {"src":"../src/img/addTodo.svg",
-     "alt":"image for a button to add more todos."}))))
+    return elFactory("div", {"class":"addTodoButton"}, elFactory("p", {}, 
+                elFactory("button", {"id":"showDialog"},
+                    elFactory("img", {"src":"../src/img/addTodo.svg",
+                    "alt":"image for a button to add more todos."}))))
 }
 
 
