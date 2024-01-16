@@ -2,6 +2,12 @@
 
 Welcome to the Todo List project! This web application allows you to create projects and manage detailed todos within them. You can check, edit, and remove todos to keep track of your tasks effectively.
 
+Made with Vanilla Js, HTML and CSS
+
+Live Preview: https://mcorduk.github.io/todo-list/
+
+![image](https://github.com/Mcorduk/todo-list/assets/104722188/a50ede30-6746-478c-ad5f-7ebeae73afa1)
+
 ## Features
 
 - Create and manage projects
